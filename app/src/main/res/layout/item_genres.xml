@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cv_genres"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="200dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="200dp"
+        android:padding="5dp"
+        android:clickable="true"
+        android:background="@color/violet">
         
         <ImageView
             android:id="@+id/iv_genres"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
             />
         <TextView
             android:id="@+id/tv_genres"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:paddingLeft="10dp"
+            android:textColor="#ffffff"
+            android:background="#20000000"
+            android:textAllCaps="true"
             android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

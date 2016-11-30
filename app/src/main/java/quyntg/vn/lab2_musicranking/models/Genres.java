@@ -14,6 +14,9 @@ public class Genres extends RealmObject{
     public String title;
     public int imageId;
 
+    public Genres(){
+
+    }
     public Genres(String title, int imageId) {
         this.title = title;
         this.imageId = imageId;

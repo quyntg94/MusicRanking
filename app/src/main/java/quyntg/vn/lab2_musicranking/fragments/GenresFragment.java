@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,9 @@ import retrofit2.Retrofit;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GenresFragment extends Fragment {
+public class GenresFragment extends Fragment implements View.OnClickListener {
 
+    private static final String TAG = GenresFragment.class.toString();
     @BindView(R.id.rv_genres)
     RecyclerView rv_genres;
 
@@ -49,13 +51,16 @@ public class GenresFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_genres, container, false);
         ButterKnife.bind(this, view);
         DBContext.init(getContext());
-        setupUI(view);
+        setupUI();
         getData();
         return view;
     }
 
-    private void setupUI(View view) {
+
+    private void setupUI() {
         genresAdapter = new GenresAdapter();
+        genresAdapter.setOnItemClickListener(this);
+
         GridLayoutManager gridLayoutManager = (new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup(){
             public int getSpanSize(int position){
@@ -66,6 +71,7 @@ public class GenresFragment extends Fragment {
 
         genresAdapter.notifyDataSetChanged();
         rv_genres.setAdapter(genresAdapter);
+
 
     }
 
@@ -87,10 +93,8 @@ public class GenresFragment extends Fragment {
                             if (subgenres.getId().equals("")) {
                                 subgenres.setId("0");
                             }
-                            int id = getContext().getResources().getIdentifier("genre_" + subgenres.getId() +"_3x", "drawable", getContext().getPackageName());
+                            int id = getContext().getResources().getIdentifier("genre_" + subgenres.getId(), "drawable", getContext().getPackageName());
                             Genres.GENRES_LIST.add(new Genres(subgenres.getTranslation_key(), id));
-                            // Save media type to Realm
-                            //Log.d(TAG, String.format("%s %s", subgenre.getTranslation_key(), id));
                         }
                         System.out.println(String.format("ADD %s", Genres.GENRES_LIST.size()));
                         DBContext.getInstance().addList(Genres.GENRES_LIST);
@@ -106,4 +110,15 @@ public class GenresFragment extends Fragment {
         });
 
     }
+
+    @Override
+    public void onClick(View v) {
+//        TopsongsFragment topsongsFragment = new TopsongsFragment();
+//        Genres genres = (Genres) v.getTag();
+
+        Log.d(TAG, "annnnnnnnnnnnnnn");
+// viet ham mo fragment moi o day, genre can truyen vao la cai genres kia :v
+//        EventBus.getDefault().post(new FragmentEvent(topsongsFragment, true));
+    }
+
 }

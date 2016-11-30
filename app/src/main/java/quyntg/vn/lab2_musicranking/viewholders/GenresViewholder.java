@@ -20,14 +20,33 @@ public class GenresViewholder extends RecyclerView.ViewHolder {
     ImageView iv_genres;
     @BindView(R.id.tv_genres)
     TextView tv_genres;
+    View view;
 
     public GenresViewholder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+//        itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                EventBus.getDefault().post(new FragmentEvent(new TopsongsFragment(), false));
+//            }
+//        });
+//        view = itemView;
     }
 
     public void view (Genres genres){
         iv_genres.setImageResource(genres.getImageId());
         tv_genres.setText(genres.getTitle());
     }
+//    public void setData(Genres genres){
+//        iv_genres.setImageResource(genres.getImageId());
+//        tv_genres.setText(genres.getTitle());
+//
+//        if (genres != null) {
+//            view.setTag(genres);
+//        }
+//    }
+
+
+
 }
